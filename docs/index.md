@@ -9,5 +9,7 @@ theme: united
 
 ### [The use of R for spatial econometrics](https://rsbivand.github.io/emos_talk_2304/bivand_emos_230419.pdf)
 
+### [Webinar details](https://www.emos-events.com/events/roger-bivand-on-the-use-of-r-for-spatial-econometrics) 
+
 
 
