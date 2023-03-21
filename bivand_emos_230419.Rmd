@@ -110,7 +110,7 @@ We can represent a simple modelling situation in the following way:
 \]
 where the $\mathbf{rough}$ are taken to have no remaining patterning
 information. If, on the other hand, useful information remains in the
-$\mathbf{rough}$, for example with discernable spatial patterning,
+$\mathbf{rough}$, for example with discernible spatial patterning,
 we can try to retrieve it:
 \[
 \mathbf{data} = \mathbf{smooth} + \mathbf{spatial\ smooth} + \mathbf{rough}
@@ -208,7 +208,7 @@ In the spatial econometrics branch, @ISI:000184416700002 presents the extension 
 
 - The literature covering both the development and especially the use of spatially structured random effects (SSRE) is vast, and they have few problems with limited dependent variables
 
-- The literature on the specification and development of spatial econometrics models (including spatial panel models) is large, but usage is limited, not least because of the need to choose between model specifications; only this branch may open for instrumenting endogeneous covariiates
+- The literature on the specification and development of spatial econometrics models (including spatial panel models) is large, but usage is limited, not least because of the need to choose between model specifications; only this branch may open for instrumenting endogenous covariates
 
 - Both use the same specifications defining neighbours of observations, but spatial econometrics models most often use row standardised spatial weights, and SSRE most often use binary spatial weights (and require symmetric weights in a single graph)
 
@@ -222,7 +222,7 @@ In the spatial econometrics branch, @ISI:000184416700002 presents the extension 
 
 - Generalised method of moments (GMM) methods are reviewed by @KelejianPiras:2017, based on earlier work by [@kelejian+prucha:98; @kelejian+prucha:98]
 
-- Other methods like the @CONLEY19991 approach are clearly spatial econometrics, but are not often discussed in the same way (no spatial weights matrices are usd)
+- Other methods like the @CONLEY19991 approach are clearly spatial econometrics, but are not often discussed in the same way (no spatial weights matrices are used)
 
 - Please see @math9111276 and @bivand+piras:15 for summaries of ML and GMM approaches; the former also covers spatial panel models
 
@@ -238,7 +238,7 @@ The log-likelihood function for the spatial lag model is:
 - {\mathbf X}\beta)\big]
 \end{eqnarray*}
 \noindent
-and by extension the same framework is used for SDM when $[{\mathbf X} ({\mathbf W}{\mathbf X})]$ are grouped together. The sum-of-squared errors (SSE) term in the square brackets is found using auxilliary regressions ${\mathbf e} = {\mathbf y}-({\mathbf X}^\top{\mathbf X}){\mathbf X}{\mathbf y}$ and ${\mathbf u} = {\mathbf W}{\mathbf y}-({\mathbf X}^\top{\mathbf X}){\mathbf X}{\mathbf W}{\mathbf y}$, 
+and by extension the same framework is used for SDM when $[{\mathbf X} ({\mathbf W}{\mathbf X})]$ are grouped together. The sum-of-squared errors (SSE) term in the square brackets is found using auxiliary regressions ${\mathbf e} = {\mathbf y}-({\mathbf X}^\top{\mathbf X}){\mathbf X}{\mathbf y}$ and ${\mathbf u} = {\mathbf W}{\mathbf y}-({\mathbf X}^\top{\mathbf X}){\mathbf X}{\mathbf W}{\mathbf y}$, 
 and $SSE = {\mathbf e}^\top{\mathbf e} - 2 \rholag {\mathbf u}^\top{\mathbf e} + \rholag^2 {\mathbf u}^\top{\mathbf u}$. 
 The cross-products of ${\mathbf u}$ and ${\mathbf e}$ can conveniently be calculated before line search (univariate non-linear optimisation) begins.
 
@@ -282,7 +282,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 - The spatially lagged error term is handled by non-linear optimisation; both of these choices remove the need to handle the log determinant term
 
-- GMM can also handle RHS endogeneous covariates by the use of instrumental variables
+- GMM can also handle RHS endogenous covariates by the use of instrumental variables
 
 # R packages implementing spatial econometrics methods
 
@@ -306,7 +306,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 - @math9111276 summarise and present central R packages for spatial econometrics: **spatialreg** for ML [@spatialreg-package, bold are R package names], **sphet** for GMM (see @piras:10, @sphet-package), and **splm** [@millo+piras:12; @splm-package], building on **plm** [@plm-package], for spatial panel models, (see @millo+piras:12, @JSSv027i02, @JSSv082i03 and @doi:10.1002/9781119504641)
 
-- These packages are also tightly integreted in the use of the same estimation methods for the log determinant in ML estimation, and sharing infrastructure to estimate impacts; see also chapter 17 in @sdsr
+- These packages are also tightly integrated in the use of the same estimation methods for the log determinant in ML estimation, and sharing infrastructure to estimate impacts; see also chapter 17 in @sdsr
 
 - @math9111276 and chapter 16 in @sdsr also follow @bivandetal17a, which was provoked by work with @osetal16 on multi-level models, and the now-archived **HSAR** package (@HSAR:16)
 
@@ -336,7 +336,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 - There are very many simulation-based (MCMC and other sampling schemes)  packages, both specialised: **CARBayes** [@CARBayes-package] for conditional autoregressive models typically for disease mapping, and general packages permitting the use of MRF spatially structured random effects: **geostan** [@geostan-package], **R2BayesX** [@R2BayesX-package], **brms** [@brms-package] and **bamlss** [@bamlss-package], using models stemming from WinBUGS and GeoBUGS; many are listed in the Bayesian task view [@Bayesian-ctv]
 
-- The **INLA** package is maintained outside CRAN, but can be installed and updated using similar mechanaisms [@INLA-package]. CRAN packages including **INLABMA** [@INLABMA-package], **bigDM** [@bigDM-package], **inlabru** [@inlabru-package] and **DClusterm** [@DClusterm-package] use INLA models for fitting spatial and spatio-temporal models [@10.1111/rssc.12292; @blangiardo2015spatial; @gomez2020bayesian]
+- The **INLA** package is maintained outside CRAN, but can be installed and updated using similar mechanisms [@INLA-package]. CRAN packages including **INLABMA** [@INLABMA-package], **bigDM** [@bigDM-package], **inlabru** [@inlabru-package] and **DClusterm** [@DClusterm-package] use INLA models for fitting spatial and spatio-temporal models [@10.1111/rssc.12292; @blangiardo2015spatial; @gomez2020bayesian]
 
 - Spatial generalised additive models of various kinds can also be estimated using **gamlss.spatial** [@gamlss.spatial-package], and the MRF smooth in  **mgcv** [@mgcv-package]
 
@@ -367,9 +367,9 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 ## Boston housing values hedonic model
 
-- @HarrisonRubinfeld:1978 made a serious and thorough attempt to use census data observed at the census tract level to try to establish willigness to pay (WTP) for air pollution abatement in Boston [@harrison+rubinfeld:78a; @harrison+rubinfeld:78b]
+- @HarrisonRubinfeld:1978 made a serious and thorough attempt to use census data observed at the census tract level to try to establish willingness to pay (WTP) for air pollution abatement in Boston [@harrison+rubinfeld:78a; @harrison+rubinfeld:78b]
 
-- Their data set was published in @belsleyetal:80, a book on regression diagnostics, and began to be used widely, including provision from @newmanetal:98, available as R package **mlbench** [@mlbench-package]; it is also avaailable from Statlib http://lib.stat.cmu.edu/datasets/
+- Their data set was published in @belsleyetal:80, a book on regression diagnostics, and began to be used widely, including provision from @newmanetal:98, available as R package **mlbench** [@mlbench-package]; it is also available from Statlib http://lib.stat.cmu.edu/datasets/
 
 - @gilley+pace:96 provided a corrected dataset, pointing out that the median housing value variable is, in fact, censored
 
@@ -529,20 +529,26 @@ The model output forms an uneven cone declining with distance from the central b
 knitr::include_graphics("img/nox_540.png")
 ```
 
-## Are our results the same as SAS? {.allowframebreaks}
+## Are our results the same as SAS? i
 
 The SAS blogs use a subset of the actual covariates used by @HarrisonRubinfeld:1978. For the chosen covariates and 506 census tracts, the coefficient values agree in the linear model case:
 
 ```{r}
 coef(lm(log(CMEDV) ~ log(PTRATIO) + log(LSTAT), data=boston_506))
 ```
+
+## Are our results the same as SAS? ii
+
 and in the spatial error model case (using `spatialreg::errorsarlm()` and pre-computing the spatial weights object eigenvalues):
 
-```{r}
+```{r, warning=FALSE}
 e <- spatialreg::eigenw(lw_q_506)
 coef(spatialreg::errorsarlm(log(CMEDV) ~ log(PTRATIO) + log(LSTAT),
     data=boston_506, listw=lw_q_506, control=list(pre_eig=e)))
 ```
+
+## Are our results the same as SAS? iii
+
 Finally, the AIC of the general nested model also agrees (listed as SDAC in the blog):
 
 ```{r}
@@ -567,7 +573,7 @@ f <- formula(log(median) ~ I(RM^2) + AGE + log(DIS) + log(RAD) + TAX +
 
 Omitting the censored tracts creates no-neighbour observations, which can be accommodated here using the `zero.policy=` argument; the GNM, SDEM and SLX are estimated (`CHAS` is a categorical variable, for which the spatial lag is not well understood, and is here omitted from the Durbin term):
 
-```{r}
+```{r, warning=FALSE}
 GNM_487 <- spatialreg::sacsarlm(f, data=boston_487, listw=lw_q_487, 
     zero.policy = TRUE, Durbin=update(f, ~ . - CHAS), 
     control=list(pre_eig1=e, pre_eig2=e))
@@ -612,7 +618,7 @@ spatialreg::Hausman.test(SDEM_487)
 
 Once again we fit three models including the spatially lagged continuous covariates:
 
-```{r}
+```{r, warning=FALSE}
 e <- spatialreg::eigenw(lw_q_94)
 GNM_94 <- spatialreg::sacsarlm(f, data=boston_94, listw=lw_q_94, 
     zero.policy = TRUE, Durbin=update(f, ~ . - CHAS), 
@@ -683,7 +689,7 @@ spatialreg::Hausman.test(SDEM_94)
 
 We repeat the exercise using weights (the counts of houses used to calculate the response variable):
 
-```{r}
+```{r, warning=FALSE}
 SDEM_94w <- spatialreg::errorsarlm(f, weights=units, data=boston_94,
     listw=lw_q_94, zero.policy = TRUE, Durbin=update(f, ~ . - CHAS),
     control=list(pre_eig=e))
@@ -787,7 +793,7 @@ printCoefmat(coef(summary(LM_506))["I((NOX * 10)^2)",, drop=FALSE])
 
 and the spatial error model with added trend surface covariates:
 
-```{r}
+```{r, warning=FALSE}
 SEM_506 <- spatialreg::errorsarlm(update(f, log(CMEDV) ~ . + 
         poly(LON, LAT, degree=2)), data=boston_506, listw=lw_q_506)
 printCoefmat(coef(summary(SEM_506))["I((NOX * 10)^2)",, drop=FALSE])
@@ -796,7 +802,7 @@ The weakest weighted SDEM total impact of the air pollution covariate is still 2
 
 ## WTP i
 
-The willingness to pay for a one part per hundred milliom (pphm) reduction in NOX in 1970 USD in the original article are taken as the mean difference between prediction from the base model using the original  data, and prediction with NOX reduced by 0.1 parts per ten million (1 pphm; the formula expression is `I((NOX*10)^2))`):
+The willingness to pay for a one part per hundred million (pphm) reduction in NOX in 1970 USD in the original article are taken as the mean difference between prediction from the base model using the original  data, and prediction with NOX reduced by 0.1 parts per ten million (1 pphm; the formula expression is `I((NOX*10)^2))`):
 
 ```{r}
 boston_506_1 <- boston_506
@@ -832,7 +838,7 @@ boston_94_1 <- boston_94
 boston_94_1$NOX <- boston_94_1$NOX - 0.1
 ```
 
-we se an apparently much larger WTP in the SLX model:
+we see an apparently much larger WTP in the SLX model:
 
 ```{r}
 p0 <- predict(SLX_94, newdata=boston_94, listw=lw_q_94)
