@@ -27,9 +27,9 @@ knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
 
 - It will become clear that these kinds of data may be characterised by spatial autocorrelation
 
-- On the one hand, information leaking between neighbouring spatial entities needs to be taken into account
+- On the one hand, information leaking between neighbouring spatial entities - spillover - needs to be taken into account
 
-- On the other, we will see that looking carefully at spatial entities, and understanding that such spillovers can occur, may lead us to clearer analysis
+- On the other, we will see that looking carefully at spatial entities - observational units often not designed by the analyst, and understanding that such spillovers can occur, may lead us to clearer analysis
 
 
 ## Webinar learning outcomes
@@ -45,13 +45,15 @@ knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
 
 ## Webinar contents
 
+- Contents build on chapters 14-17 of @sdsr, also at https://r-spatial.org/book
+
 - What is spatial econometrics? How does it relate to econometrics and to other fields modelling with spatial data?
 
 - Which estimation methods are used in spatial econometrics, which are specific to spatial econometrics, and which shared with proximate fields?
 
 - How are spatial (and spatio-temporal) data represented in R packages, and which packages provide implementations of relevant estimation methods?
 
-- Boston housing value data set: case of trying to study a problem when the support of the data probably does not match the problem
+- Boston housing value data set: a case of trying to study a problem when the support of the data probably does not match the problem
 
 # Spatial econometrics
 
@@ -65,7 +67,7 @@ knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
 
 ## Statistical maps
 
-- Two statisticians, @moran48 and @geary:54, had proposed measures that began to address the need to infer from maps
+- Pre-dating spatial econometrics, two statisticians, @moran48 and @geary:54, had proposed measures that began to address the need to infer from maps
 
 - Geary's measure was followed up by @duncanetal61 in *Statistical geography: Problems in analyzing areal data*, where they point to issues raised by the modifiable nature of spatial units used for collecting and analysing information (modifiable areal unit problem, MAUP)
 
@@ -78,7 +80,7 @@ knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
 
 - @cliff+ord:69 generalised the way in which neighbours could be defined as a spatial weights matrix  (see [Ch. 14](https://r-spatial.org/book/14-Areal.html)), and in *Spatial Autocorrelation* [@cliff+ord:73] set out the framework for global measures of spatial autocorrelation
 
-- @ord:10 reflects on their legacy, expressing doubt that the serious points raised by @granger:69 (and noted by @ripley:88) had been addressed adequately
+- @ord:10 reflects on their legacy, expressing doubt that the serious points raised by @granger:69 (and noted by @ripley:88) have been addressed adequately
 
 - Another early summary (@hepple:74) shows how much had already been grasped, including the impact of spatial autocorrelation on multivariate analysis 
 
@@ -96,7 +98,7 @@ knitr::opts_chunk$set(echo = TRUE, paged.print=FALSE)
 
 ## Spatial econometrics or spatially structured random effects?
 
-- From the mid 1970's, two traditions developed, one handling the effects of spatial autocorrelation in modelling in ways analogous to time series, the other adding spatially structured random effects to models
+- From the mid 1970's, two traditions developed, one handling the effects of spatial autocorrelation in modelling in ways analogous to time series, the other adding spatially structured random effects (in the statistical sense rather than panel econometrics sense) to models
 
 - The latter was proposed by @besag:74, and has been widely adopted in spatial epidemiology (disease mapping) and spatial ecology, as an effective way of including the unobserved spatial process
 
@@ -197,7 +199,7 @@ disturbance vector with constant variance $\sigma^2$ and covariance terms specif
 
 Spatio-temporal models in the spatially structured random effects branch are just (G)LMM with a added temporal random effect. Non-separability between time and space remains a problem, but a lot can be achieved, see @blangiardo2015spatial and @gomez2020bayesian
 
-In the spatial econometrics branch, @ISI:000184416700002 presents the extension of panel econometrics to spatial panel data (see also @Elhorst2014). In extending to time panels, a range of combined models has also come into being, a general nested model (GNM) nesting all the others, a model without spatially lagged covariates (SARAR). If neither the residuals nor the response are modelled with spatial processes, spatially lagged covariates may be added to a linear model, as a spatially lagged X model (SLX) [@lesage:14; @halleck-vega+elhorst:15]. We can write the GNM as (here a cross-sectional model for simplicity):
+In the spatial econometrics branch, @ISI:000184416700002 presents the extension of panel econometrics to spatial panel data (see also @Elhorst2014). A range of combined models has also come into being, a general nested model (GNM) nesting all the others, a model without spatially lagged covariates (SARAR). If neither the residuals nor the response are modelled with spatial processes, spatially lagged covariates may be added to a linear model, as a spatially lagged X model (SLX) [@lesage:14; @halleck-vega+elhorst:15]. We can write the GNM as (here a cross-sectional model for simplicity):
 
 \begin{displaymath}
 {\mathbf y} = \rho_{\mathrm{Lag}} {\mathbf W}{\mathbf y} + {\mathbf X}\beta + {\mathbf W}{\mathbf X}\gamma + {\mathbf u},
@@ -265,7 +267,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 ## Bayesian methods
 
-- @lesage+pace:09 and their earlier and later work form the foundation for Markov chain Monte Carlo (MCMC) approaches
+- @lesage+pace:09 and their earlier and later work form the foundation for Markov chain Monte Carlo (MCMC) approaches; these by extension admit limited dependent variables in a convenient way
 
 - Griddy Gibbs sampling from a spline smooth of values of LU decomposition-based log determinants are used for spatial process coefficients
 
@@ -278,7 +280,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 - @math9111276 and @bivand+piras:15 review and summarise GMM approaches to estimation
 
-- These methods handle the spatially lagged response ${\mathbf W}{\mathbf y}$ by taking ${\mathbf W}{\mathbf X}$ and ${\mathbf W}{\mathbf W}{\mathbf X}$ as instruments
+- These methods handle the spatially lagged response ${\mathbf W}{\mathbf y}$ by taking ${\mathbf W}{\mathbf X}$ and ${\mathbf W}{\mathbf W}{\mathbf X}$ (or more similar terms) as instruments
 
 - The spatially lagged error term is handled by non-linear optimisation; both of these choices remove the need to handle the log determinant term
 
@@ -300,7 +302,7 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 
 - None of the task views concentrates on spatial econometrics, so perhaps review and comparison articles may assist
 
-- Also note that acceptance on the Comprehensive R Archive Network (CRAN) only certifies that the package meets general standards for packages (licence declared, code runs examples and tests, functions are minimally documented), it does not confirm that packages do what they claim to do
+- Also note that acceptance on the Comprehensive R Archive Network (CRAN) only certifies that the package meets general standards for packages (licence declared, code runs examples and tests, functions are as least minimally documented), it does not confirm that packages do what they claim to do
 
 - If there is a JSS or other published article subject to substantive peer review, one can be more confident on this point
 
@@ -382,6 +384,14 @@ weights matrix would be impracticable. @bivandetal13 describe the available alte
 - Both of these use the Boston data set, but just focus on mapping and fitting standard spatial econometrics models to a subset of the covariates (omitting the air pollution measure
 
 - They also use 1970 tract boundaries without describing how they were generated, and without taking up the challenges of the data set, not even mentioning that the response is censored 
+
+## Caveats
+
+- The SAS blogs follow general practice, not only in spatial econometrics, of comparative tabulation of model output and significance tests of fitted coefficients and goodness of fit statistics
+
+- In the following, this practice will also be followed, but acknowledgement that multiple comparisons adjustments should have been applied is sensible
+
+- Fitting multiple successive models to the same data, comparing the models for possible specifications, and choosing the estimated model suiting one's convictions is obviously highly subjective
 
 ## Boston housing values hedonic model
 
@@ -798,7 +808,7 @@ SEM_506 <- spatialreg::errorsarlm(update(f, log(CMEDV) ~ . +
         poly(LON, LAT, degree=2)), data=boston_506, listw=lw_q_506)
 printCoefmat(coef(summary(SEM_506))["I((NOX * 10)^2)",, drop=FALSE])
 ```
-The weakest weighted SDEM total impact of the air pollution covariate is still 2.5 times greater than the original calculation.
+The weakest weighted model output zone SDEM total impact of the air pollution covariate is still 2.5 times greater than the original calculation.
 
 ## WTP i
 
